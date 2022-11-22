@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sans: #F87070;
+    --serif: #70F3F8;
+    --mono: #D881F8;
+    --bdark: #161932;
+    --blight: #1E213F;
+    --timer: #D7E0FF;
+    --clight: #EFF1FA;
+}
+/*
+font-family: 'Kumbh Sans', sans-serif;
+font-family: 'Roboto Slab', serif;
+font-family: 'Space Mono', monospace;
+*/
