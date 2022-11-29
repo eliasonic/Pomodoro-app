@@ -14,26 +14,23 @@
 </head>
 <body>
   <div class="container">
-    <div class="app-name">
-      <h2>pomodoro</h2>
+    <div class="logo">
+      <img src="assets/logo.svg" alt="">
     </div>
 
-    <div class="timer-box">
+    <div class="timer-box" style="background: lightgray">
       <div class="panel">
-        <button>pomodoro</button>
-        <button>short break</button>
-        <button>long break</button>
-      </div> 
-  
+        <button class="panel-btn">pomodoro</button>
+        <button class="panel-btn">short break</button>
+        <button class="panel-btn">long break</button>
+        <div id="btn"></div>
+      </div>
+        
       <div class="timer">
         <div class="circle">
           <div>
-            <p id="minutes"></p>
-            <p>:</p>
-            <p id="seconds"></p>
-          </div>
-          <div>
-            <p>start</p>
+            <p id=""></p>
+            <button id="">start</button>
           </div>  
         </div>
       </div>   
@@ -43,7 +40,7 @@
       <img src="assets/icon-settings.svg" alt="">
     </div>
 
-
+<!--
     <div class="settings-box">
       <div class="header">
         <h2>Settings</h2>
@@ -103,13 +100,10 @@
           <div class="color3"></div>
         </div>
       </div>
-
-      <button>Apply</button>
     </div>
+    <button class="apply" onclick="applySettings()">Apply</button> -->
   </div>
   
- 
-<!--  pause
-      restart  -->
+  <script src="script.js"></script>
 </body>
 </html>
