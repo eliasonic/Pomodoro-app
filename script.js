@@ -1,5 +1,5 @@
 // code for progress indicator and timer
-var min = 1;
+var min = document.getElementById('pd').innerHTML;
 var time = min * 60;   
 time -= 1;
 var x = 1;
@@ -10,6 +10,9 @@ var timerText = document.getElementById('timer-text');
 var timerButton = document.getElementById('timer-btn');
 
 timerText.innerHTML = min < 10 ? '0'+ min +':00' : min +':00';
+semicircles[0].style.transform = 'rotate(360deg)';
+semicircles[1].style.transform = 'rotate(180deg)';
+semicircles[2].style.display = 'none';
 
 function runTimer() {
     function timerFunc() {
@@ -47,17 +50,28 @@ function runTimer() {
             returnId = -1;
             time = min * 60;
             time -= 1;
+            x = 1;
 
-            //semicircles[0].style.display = 'none';
-            //semicircles[1].style.display = 'none';
+            // reset progress indicator
+            semicircles[0].style.display = 'none';
+            semicircles[1].style.display = 'none';
+            semicircles[0].style.transform = 'rotate(360deg)';
+            semicircles[1].style.transform = 'rotate(180deg)';
+            semicircles[2].style.display = 'none';
         }
     }
 
     // start timer
     if (returnId == -1) {
+        // display progress indicator
+        if (semicircles[0].style.display === 'none' && semicircles[1].style.display === 'none') {
+            semicircles[0].style.display = 'block';
+            semicircles[1].style.display = 'block';    
+        } 
         timerButton.innerHTML = 'pause';
         returnId = setInterval(timerFunc, 1000);
     }
+    
     // pause timer
     else {
         timerButton.innerHTML = 'start';
@@ -87,8 +101,14 @@ function pomodoro() {
     button[1].classList.remove('text-color');
     button[2].classList.remove('text-color');
 
+    // reset progress indicator
+    semicircles[0].style.display = 'none';
+    semicircles[1].style.display = 'none';
+    semicircles[0].style.transform = 'rotate(360deg)';
+    semicircles[1].style.transform = 'rotate(180deg)';
+
     // displays the set time
-    min = 25;
+    min = setPomodoro.innerHTML;
     setTimer(min);
 
     // stops any running timer
@@ -104,8 +124,14 @@ function shortBreak() {
     button[1].classList.add('text-color');
     button[2].classList.remove('text-color');
 
+    // reset progress indicator
+    semicircles[0].style.display = 'none';
+    semicircles[1].style.display = 'none';
+    semicircles[0].style.transform = 'rotate(360deg)';
+    semicircles[1].style.transform = 'rotate(180deg)';
+
     // displays the set time
-    min = 5;
+    min = setShortbreak.innerHTML;
     setTimer(min);
 
     // stops any running timer
@@ -121,8 +147,14 @@ function longBreak() {
     button[1].classList.remove('text-color');
     button[2].classList.add('text-color');
 
+    // reset progress indicator
+    semicircles[0].style.display = 'none';
+    semicircles[1].style.display = 'none';
+    semicircles[0].style.transform = 'rotate(360deg)';
+    semicircles[1].style.transform = 'rotate(180deg)';
+
     // displays the set time
-    min = 15;
+    min = setLongbreak.innerHTML;
     setTimer(min);
 
     // stops any running timer
@@ -132,6 +164,7 @@ function longBreak() {
 function setTimer(min) {
     time = min * 60;   
     time -= 1;
+    x = 1;
     timerText.innerHTML = min < 10 ? '0'+ min +':00' : min +':00';
     timerButton.innerHTML = 'start';
 }
@@ -153,8 +186,9 @@ function openSettings() {
     // expand settings box 
     settingsBox.style.top = '-497px';   
     
-    // change opacity of logo and settings icon
+    // change opacity of logo, togglebutton and settings icon
     logo.style.opacity = '0.5'; 
+    toggleButton.style.opacity = 0.5;
     settingsIcon.style.opacity = '0.25';  
     
     // change opacity of settings icon on hover
@@ -166,10 +200,12 @@ function closeSettings() {
     // collapse settings box
     settingsBox.style.top = '35px'; 
     
-    // restore opacity of logo and settings icon 
+    // restore opacity of logo, togglebutton and settings icon 
     logo.style.opacity = '1';
+    toggleButton.style.opacity = 1;
     settingsIcon.style.opacity = '0.5';  
     
+    // restore opacity of settings icon on hover
     settingsIcon.addEventListener('mouseenter', () => settingsIcon.style.opacity = '1');
     settingsIcon.addEventListener('mouseleave', () => settingsIcon.style.opacity = '0.5');
 }
@@ -195,3 +231,33 @@ arrows3[0].addEventListener('mouseenter', () => arrows3[0].src = 'assets/icon-ar
 arrows3[0].addEventListener('mouseleave', () => arrows3[0].src = 'assets/icon-arrow-up.svg');
 arrows3[1].addEventListener('mouseenter', () => arrows3[1].src = 'assets/icon-arrow-down-hover.svg');
 arrows3[1].addEventListener('mouseleave', () => arrows3[1].src = 'assets/icon-arrow-down.svg');
+
+
+// Code for setting timer
+var setPomodoro = document.getElementById('pd');
+var setShortbreak = document.getElementById('sb');
+var setLongbreak = document.getElementById('lb');
+
+function increment(setTimer) {
+    setTimer.innerHTML++;
+}
+
+function decrement(setTimer) {
+    if (setTimer.innerHTML > 1) {
+        setTimer.innerHTML--;
+    }
+}
+
+// Code for applying settings
+function applySettings() {
+    // apply timer settings
+    if (toggleButton.style.left === '7px') {
+        pomodoro();
+    }
+    else if (toggleButton.style.left === '127px') {
+        shortBreak();
+    }
+    else if (toggleButton.style.left === '247px') {
+        longBreak();
+    }
+}

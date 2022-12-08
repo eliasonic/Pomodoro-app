@@ -6,8 +6,8 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
   
   <title>Frontend Mentor | Pomodoro app</title>
@@ -46,57 +46,63 @@
       
       <div class="settings-box">
         <div class="header">
-          <h2>Settings</h2>
+          <h3>Settings</h3>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" onclick="closeSettings()"><path fill="#1E213F" fill-rule="evenodd" d="M11.95.636l1.414 1.414L8.414 7l4.95 4.95-1.414 1.414L7 8.414l-4.95 4.95L.636 11.95 5.586 7 .636 2.05 2.05.636 7 5.586l4.95-4.95z" opacity="1"/></svg>
-        </div> <hr>
+        </div> <hr class="hr-1">
   
         <div class="timer-settings">
-          <h3>Time (minutes)</h3>
-          <div>
+          <p class="time">Time (minutes)</p>
+          <div class="time-box">
             <div class="pomodoro">
-              <p>pomodoro</p>
-              <div>
-                <p id=""></p>
+              <p class="set-time">pomodoro</p>
+              <div class="set-area">
+                <p id="pd">25</p>
                 <div class="arrows">
-                  <img src="assets/icon-arrow-up.svg" alt="">
-                  <img src="assets/icon-arrow-down.svg" alt="">
+                  <img src="assets/icon-arrow-up.svg" alt="" onclick="increment(setPomodoro)">
+                  <img src="assets/icon-arrow-down.svg" alt="" onclick="decrement(setPomodoro)">
                 </div>
               </div>
             </div>
             <div class="short-break">
-              <p>short break</p>
-              <div>
-                <p id=""></p>
+              <p class="set-time">short break</p>
+              <div class="set-area">
+                <p id="sb">5</p>
                 <div class="arrows2">
-                  <img src="assets/icon-arrow-up.svg" alt="">
-                  <img src="assets/icon-arrow-down.svg" alt="">
+                  <img src="assets/icon-arrow-up.svg" alt="" onclick="increment(setShortbreak)">
+                  <img src="assets/icon-arrow-down.svg" alt="" onclick="decrement(setShortbreak)">
                 </div>
               </div>
             </div>
             <div class="long-break">
-              <p>long break</p>
-              <div>
-                <p id=""></p>
+              <p class="set-time">long break</p>
+              <div class="set-area" >
+                <p id="lb">15</p>
                 <div class="arrows3">
-                  <img src="assets/icon-arrow-up.svg" alt="">
-                  <img src="assets/icon-arrow-down.svg" alt="">
+                  <img src="assets/icon-arrow-up.svg" alt="" onclick="increment(setLongbreak)">
+                  <img src="assets/icon-arrow-down.svg" alt="" onclick="decrement(setLongbreak)">
                 </div>
               </div>
             </div>
           </div>
-        </div> <hr>
+        </div> <hr class="hr-2">
   
         <div class="font-settings">
-          <h3>Font</h3>
+          <p>Font</p>
           <div>
-            <div class="sans">Aa</div>
-            <div class="serif">Aa</div>
-            <div class="mono">Aa</div>
+            <div class="font-outer">
+              <div class="font sans select-font">Aa</div>
+            </div>
+            <div class="font-outer">
+              <div class="font serif">Aa</div>
+            </div>
+            <div class="font-outer">
+              <div class="font mono">Aa</div>
+            </div>
           </div>
-        </div> <hr>
+        </div> <hr class="hr-2">
   
         <div class="color-settings">
-          <h3>Color</h3>
+          <p>Color</p>
           <div>
             <div class="color1"></div>
             <div class="color2"></div>
