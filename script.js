@@ -248,9 +248,48 @@ function decrement(setTimer) {
     }
 }
 
-// Code for applying settings
+// Code for selecting color
+let color = document.querySelectorAll('.color');
+
+let doneIcon = document.createElement('img');
+doneIcon.src = 'assets/icons8-done-24.png';
+doneIcon.alt = '';
+doneIcon.style.width = '18px';
+color[0].appendChild(doneIcon);
+
+color[0].addEventListener('click', selectColor);
+color[1].addEventListener('click', selectColor);
+color[2].addEventListener('click', selectColor);
+
+function selectColor(event) {
+    color[0].innerHTML = '';
+    color[1].innerHTML = '';
+    color[2].innerHTML = '';
+    event.target.appendChild(doneIcon);
+}
+
+
+// Code for selecting and applying font
+let font = document.getElementsByClassName('font');
+font[0].onclick = selectFont;
+font[1].onclick = selectFont;
+font[2].onclick = selectFont;
+
+function selectFont(event) {
+    font[0].classList.remove('select-font');
+    font[1].classList.remove('select-font');
+    font[2].classList.remove('select-font');
+    event.target.classList.add('select-font');
+}
+// applying font 
+let container = document.querySelector('.container');
+font[0].addEventListener('click', () => container.style.fontFamily = "'Kumbh Sans', sans-serif");
+font[1].addEventListener('click', () => container.style.fontFamily = "'Roboto Slab', serif");
+font[2].addEventListener('click', () => container.style.fontFamily = "'Space Mono', monospace");
+
+
+//
 function applySettings() {
-    // apply timer settings
     if (toggleButton.style.left === '7px') {
         pomodoro();
     }
@@ -261,3 +300,4 @@ function applySettings() {
         longBreak();
     }
 }
+

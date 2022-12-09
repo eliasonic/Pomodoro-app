@@ -12,11 +12,6 @@
     --timer: #D7E0FF;
     --setting: #EFF1FA;
 }
-/*
-font-family: 'Kumbh Sans', sans-serif;
-font-family: 'Roboto Slab', serif;
-font-family: 'Space Mono', monospace;
-*/
 
 /* desktop */
 .container {
@@ -237,7 +232,7 @@ font-family: 'Space Mono', monospace;
     border-top: 1px solid #E3E1E1;
 }
 .time {
-    padding-top: 28px;
+    padding-top: 25px;
     padding-left: 40px;
     font-size: 13px;
     font-weight: 700;
@@ -248,7 +243,7 @@ font-family: 'Space Mono', monospace;
 .time-box {
     display: flex;
     justify-content: space-between;
-    padding: 24px 38px 24px 40px;
+    padding: 20px 38px 24px 40px;
 }
 .set-time {
     font-size: 12px;
@@ -298,6 +293,8 @@ font-family: 'Space Mono', monospace;
     justify-content: space-between;
     align-items: center;
 }
+
+.color-settings p,
 .font-settings p {
     font-size: 13px;
     font-weight: 700;
@@ -305,9 +302,13 @@ font-family: 'Space Mono', monospace;
     letter-spacing: 5px;
     color: var(--bdark);
 }
+
+.color-settings div,
 .font-settings div {
     display: flex;
 }
+
+.color-outer,
 .font-outer {
     width: 50px;
     height: 50px;
@@ -318,6 +319,12 @@ font-family: 'Space Mono', monospace;
     justify-content: center;
     align-items: center;
 }
+
+.color-outer:hover,
+.font-outer:hover {
+    border: 1px solid var(--setting);
+}
+
 .font {
     width: 40px;
     height: 40px;
@@ -347,8 +354,29 @@ font-family: 'Space Mono', monospace;
     background: var(--bdark);
     opacity: 1;
 }
-.font-outer:hover {
-    border: 1px solid var(--setting);
+.color-settings {
+    padding: 19px 33px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.color {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.color1 {
+    background: var(--default);
+}
+.color2 {
+    background: var(--option2);
+}
+.color3 {
+    background: var(--option3);
 }
 
 
