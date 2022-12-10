@@ -268,8 +268,7 @@ function selectColor(event) {
     event.target.appendChild(doneIcon);
 }
 
-
-// Code for selecting and applying font
+// Code for selecting font
 let font = document.getElementsByClassName('font');
 font[0].onclick = selectFont;
 font[1].onclick = selectFont;
@@ -281,15 +280,21 @@ function selectFont(event) {
     font[2].classList.remove('select-font');
     event.target.classList.add('select-font');
 }
-// applying font 
-let container = document.querySelector('.container');
-font[0].addEventListener('click', () => container.style.fontFamily = "'Kumbh Sans', sans-serif");
-font[1].addEventListener('click', () => container.style.fontFamily = "'Roboto Slab', serif");
-font[2].addEventListener('click', () => container.style.fontFamily = "'Space Mono', monospace");
 
 
-//
+// Code for applying settings
 function applySettings() {
+    // apply timer settings
+    applyTimer();
+    
+    // apply font settings
+    applyFont();
+
+    // apply color settings
+    applyColor();
+}
+
+function applyTimer() {
     if (toggleButton.style.left === '7px') {
         pomodoro();
     }
@@ -301,3 +306,47 @@ function applySettings() {
     }
 }
 
+function applyFont() {
+    let container = document.querySelector('.container');
+
+    if (font[0].className.includes('select-font')) {
+        container.style.fontFamily = "'Kumbh Sans', sans-serif";   
+    }
+    else if (font[1].className.includes('select-font')) {
+        container.style.fontFamily = "'Roboto Slab', serif";
+    }
+    else if (font[2].className.includes('select-font')) {
+        container.style.fontFamily = "'Space Mono', monospace";
+    }
+}
+
+function applyColor() {
+    let applyButton = document.querySelector('.apply');
+
+    if (color[0].firstChild === doneIcon) {
+        toggleButton.style.backgroundColor = 'var(--default)';    // toggle button
+        semicircles[0].style.backgroundColor = 'var(--default)';  // progress indicator 
+        semicircles[1].style.backgroundColor = 'var(--default)';   
+        applyButton.style.backgroundColor = 'var(--default)';     // apply button
+        timerButton.onmouseover = () => timerButton.style.color = 'var(--default)';   // timer button hover
+        timerButton.onmouseout = () => timerButton.style.color = 'var(--timer)';
+    }
+
+    else if (color[1].firstChild === doneIcon) {
+        toggleButton.style.backgroundColor = 'var(--option2)';
+        semicircles[0].style.backgroundColor = 'var(--option2)';
+        semicircles[1].style.backgroundColor = 'var(--option2)';
+        applyButton.style.backgroundColor = 'var(--option2)';
+        timerButton.onmouseover = () => timerButton.style.color = 'var(--option2)';   
+        timerButton.onmouseout = () => timerButton.style.color = 'var(--timer)';
+    }
+
+    else if (color[2].firstChild === doneIcon) {
+        toggleButton.style.backgroundColor = 'var(--option3)';
+        semicircles[0].style.backgroundColor = 'var(--option3)';
+        semicircles[1].style.backgroundColor = 'var(--option3)';
+        applyButton.style.backgroundColor = 'var(--option3)';
+        timerButton.onmouseover = () => timerButton.style.color = 'var(--option3)';   
+        timerButton.onmouseout = () => timerButton.style.color = 'var(--timer)';
+    }
+}
