@@ -183,8 +183,8 @@ var settingsIcon = document.querySelector('.settings-icon svg');
 var logo = document.querySelector('.logo svg');
 
 function openSettings() {
-    // expand settings box 
-    settingsBox.style.top = '-497px';   
+    // open settings box 
+    settingsBox.style.display = 'block';   
     
     // change opacity of logo, togglebutton and settings icon
     logo.style.opacity = '0.5'; 
@@ -197,8 +197,8 @@ function openSettings() {
 }
 
 function closeSettings() {
-    // collapse settings box
-    settingsBox.style.top = '35px'; 
+    // close settings box 
+    settingsBox.style.display = 'none'; 
     
     // restore opacity of logo, togglebutton and settings icon 
     logo.style.opacity = '1';

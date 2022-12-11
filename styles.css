@@ -36,9 +36,9 @@
 .settings-icon:hover svg {
     opacity: 1;
 }
-.timer-box {
+/*.timer-box {
     overflow: hidden;
-}
+}*/
 
 /* toggle button */
 .panel {
@@ -148,6 +148,7 @@
 .timer p {
     font-size: 100px;
     font-weight: 700;
+    letter-spacing: -2px;
     margin-bottom: 12px;
     color: var(--timer);
 }
@@ -175,8 +176,9 @@
     background: #FFFFFF;
     border-radius: 25px;
     position: relative;
-    top: /*35px;*/ -497px;
+    top: -497px; 
     z-index: 7;
+    display: none;
     transition: .5s ease;
 }
 .header svg {
@@ -381,9 +383,10 @@
 
 
 /* tablet */
-@media only screen and (min-width: 500px) and (max-width: 1023px) {
+@media only screen and (min-width: 550px) and (max-width: 1023px) {
     .container {
-        grid-template-rows: 17% 57% 26%;
+        grid-template-rows: 2fr 582px 3fr;
+        /*grid-template-rows: 16% 61% 23%;*/
     }
     .logo {
         margin: auto auto 55px auto;
@@ -394,5 +397,103 @@
     .panel {
         margin: 0 auto 109px;
     }
-    
+}
+
+/* mobile */
+@media only screen and (min-width: 350px) and (max-width: 549px) {
+    .container {
+        grid-template-rows: 2fr 411px 3fr;
+    }
+    .panel {
+        width: /*327px;*/ 347px;
+        height: 60px;
+        margin: 0 auto 48px;
+    }
+    .panel-btn {
+        font-size: 12px;
+    }
+    #btn {
+        width: /*106px;*/ 95px;
+        height: 45px;
+    }    
+    .timer-div {
+        width: 300px;
+        height: 300px;
+    }
+    .outermost-circle {
+        width: 268px;
+        height: 268px;
+    }
+    .outer-circle {
+        width: 248px;
+        height: 248px;
+    }    
+    .inner-circle {
+        width: 233px;
+        height: 233px;
+    }   
+    .timer p {
+        font-size: 80px;
+        letter-spacing: -3px;
+    }     
+    .timer button {
+        font-size: 14px;
+        letter-spacing: 13.125px;
+    }    
+    .settings-box {
+        width: 327px;
+        height: 549px;
+        border-radius: 15px;
+        /* testing */
+        margin-top: 46px; 
+    }
+    /*.timer-box {
+        overflow: visible;
+    }*/
+    .apply {
+        top: 522px;
+        left: 94px;
+    }    
+    .apply:hover {
+        left: 100px;
+        transition: .3s ease;
+    }
+    .time {
+        padding-top: 22px;
+        padding-left: 93px;
+        font-size: 11px;
+        letter-spacing: 4.23px;
+    }
+    .time-box {
+        flex-direction: column; 
+        padding: 10px 24px 24px 23px;
+    }
+    .pomodoro,
+    .short-break,
+    .long-break {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .set-area {
+        width: 140px;
+        height: 40px;
+        /*margin-top: 8px; 
+        padding-left: 16px;
+        padding-right: 15px;*/
+        align-items: center;
+    }
+    #pd,
+    #sb,
+    #lb {
+        margin-top: 0;
+    }
+    .arrows,
+    .arrows2,
+    .arrows3 {
+        margin-top: 10px;
+    }
+    .hr-2 {
+        margin: 0 24px 0 23px; 
+    } 
 }
