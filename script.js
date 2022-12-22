@@ -1,4 +1,4 @@
-// code for progress indicator and timer
+/* code for progress indicator and timer */
 var min = document.getElementById('pd').innerHTML;
 var time = min * 60;   
 time -= 1;
@@ -24,7 +24,7 @@ function runTimer() {
         timerText.innerHTML = `${minutes}:${seconds}`;
 
         // progress indicator
-        //if (time % 60 == 0) {   
+        if (time % 60 == 0) {    // to update after every minute
             var angle = time * 360 / (time + x);
 
             if (angle > 180) {
@@ -37,7 +37,7 @@ function runTimer() {
                 semicircles[1].style.transform = `rotate(${angle}deg)`;
                 semicircles[2].style.display = 'block';
             }
-        //}
+        }
 
         time--;  // remaining time
         x++;     // elapsed time
@@ -83,7 +83,7 @@ function runTimer() {
 timerButton.addEventListener('click', runTimer);
 
 
-// code for toggle button
+/* code for toggle button */
 var toggleButton = document.getElementById('btn');
 var button = document.querySelectorAll('.panel button');
 button[0].addEventListener('click', pomodoro);
@@ -177,7 +177,7 @@ function stopTimer() {
 }
 
 
-// code to open and close Settings menu
+/* code to open and close Settings menu */
 var settingsBox = document.querySelector('.settings-box'); 
 var settingsIcon = document.querySelector('.settings-icon svg');
 var logo = document.querySelector('.logo svg');
@@ -211,7 +211,7 @@ function closeSettings() {
 }
 
 
-// Code for icon arrows hover state
+/* Code for icon arrows hover state */
 var arrows = document.querySelectorAll('.arrows img');
 arrows[0].addEventListener('mouseenter', () => arrows[0].src = 'assets/icon-arrow-up-hover.svg');
 arrows[0].addEventListener('mouseleave', () => arrows[0].src = 'assets/icon-arrow-up.svg');
@@ -233,7 +233,7 @@ arrows3[1].addEventListener('mouseenter', () => arrows3[1].src = 'assets/icon-ar
 arrows3[1].addEventListener('mouseleave', () => arrows3[1].src = 'assets/icon-arrow-down.svg');
 
 
-// Code for setting timer
+/* Code for setting timer */
 var setPomodoro = document.getElementById('pd');
 var setShortbreak = document.getElementById('sb');
 var setLongbreak = document.getElementById('lb');
@@ -248,7 +248,7 @@ function decrement(setTimer) {
     }
 }
 
-// Code for selecting color
+/* Code for selecting color */
 let color = document.querySelectorAll('.color');
 
 let doneIcon = document.createElement('img');
@@ -268,7 +268,7 @@ function selectColor(event) {
     event.target.appendChild(doneIcon);
 }
 
-// Code for selecting font
+/* Code for selecting font */
 let font = document.getElementsByClassName('font');
 font[0].onclick = selectFont;
 font[1].onclick = selectFont;
@@ -282,7 +282,7 @@ function selectFont(event) {
 }
 
 
-// Code for applying settings
+/* Code for applying settings */
 function applySettings() {
     // apply timer settings
     applyTimer();
@@ -310,13 +310,16 @@ function applyFont() {
     let container = document.querySelector('.container');
 
     if (font[0].className.includes('select-font')) {
-        container.style.fontFamily = "'Kumbh Sans', sans-serif";   
+        container.style.fontFamily = "'Kumbh Sans', sans-serif";  
+        timerText.style.fontWeight = '700'; 
     }
     else if (font[1].className.includes('select-font')) {
         container.style.fontFamily = "'Roboto Slab', serif";
+        timerText.style.fontWeight = '700';
     }
     else if (font[2].className.includes('select-font')) {
         container.style.fontFamily = "'Space Mono', monospace";
+        timerText.style.fontWeight = '400';
     }
 }
 
