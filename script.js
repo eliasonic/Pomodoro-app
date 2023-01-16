@@ -274,6 +274,9 @@ function applySettings() {
 
     // apply color settings
     applyColor();
+
+    // close settings on apply
+    closeSettings();
 }
 
 function applyTimer() {
