@@ -1,49 +1,52 @@
-/* code for progress indicator and timer */
 var min = document.getElementById('pd').innerHTML;
 var time = min * 60;   
 time -= 1;
 var x = 1;
 var returnId = -1;
 
-var semicircles = document.querySelectorAll('.semi-circle');
-var timerText = document.getElementById('timer-text');
+const bell = document.querySelector('audio');
 var timerButton = document.getElementById('timer-btn');
-
+var timerText = document.getElementById('timer-text');
 timerText.innerHTML = min < 10 ? '0'+ min +':00' : min +':00';
-semicircles[0].style.transform = 'rotate(360deg)';
-semicircles[1].style.transform = 'rotate(180deg)';
-semicircles[2].style.display = 'none';
 
+
+/* Progress Indicator */
+const circle = document.querySelector(".progress-ring__circle");
+const radius = circle.r.baseVal.value;
+const circumference = radius * 2 * Math.PI;
+
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = circumference;
+
+let setProgress = (percent) => {
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDashoffset = offset;
+}
+
+/* Timer */
 function runTimer() {
     function timerFunc() {
-        // timer
+        
         var minutes = Math.floor(time / 60);
         var seconds = time % 60;
         seconds = seconds < 10 ? '0' + seconds : seconds;
         minutes = minutes < 10 ? '0' + minutes : minutes;
         timerText.innerHTML = `${minutes}:${seconds}`;
 
-        // progress indicator
-        if (time % 60 == 0) {    // to update after every minute
-            var angle = time * 360 / (time + x);
+        
+        //if (time % 60 == 0) {    // for indicator to update every minute
+            
+            percent = Math.ceil(x * 100 / (time + x));
+            setProgress(percent);
 
-            if (angle > 180) {
-                semicircles[0].style.transform = 'rotate(180deg)';
-                semicircles[1].style.transform = `rotate(${angle}deg)`;
-                semicircles[2].style.display = 'none';
-            }
-            else {
-                semicircles[0].style.transform = `rotate(${angle}deg)`;
-                semicircles[1].style.transform = `rotate(${angle}deg)`;
-                semicircles[2].style.display = 'block';
-            }
-        }
+        //}
 
         time--;  // remaining time
         x++;     // elapsed time
 
         // restart timer
         if (time < 0) {
+            bell.play( );
             timerButton.innerHTML = 'restart';
             clearInterval(returnId);
 
@@ -51,23 +54,11 @@ function runTimer() {
             time = min * 60;
             time -= 1;
             x = 1;
-
-            // reset progress indicator
-            semicircles[0].style.display = 'none';
-            semicircles[1].style.display = 'none';
-            semicircles[0].style.transform = 'rotate(360deg)';
-            semicircles[1].style.transform = 'rotate(180deg)';
-            semicircles[2].style.display = 'none';
         }
     }
 
     // start timer
     if (returnId == -1) {
-        // display progress indicator
-        if (semicircles[0].style.display === 'none' && semicircles[1].style.display === 'none') {
-            semicircles[0].style.display = 'block';
-            semicircles[1].style.display = 'block';    
-        } 
         timerButton.innerHTML = 'pause';
         returnId = setInterval(timerFunc, 1000);
     }
@@ -102,10 +93,7 @@ function pomodoro() {
     button[2].classList.remove('text-color');
 
     // reset progress indicator
-    semicircles[0].style.display = 'none';
-    semicircles[1].style.display = 'none';
-    semicircles[0].style.transform = 'rotate(360deg)';
-    semicircles[1].style.transform = 'rotate(180deg)';
+    setProgress(0);
 
     // displays the set time
     min = setPomodoro.innerHTML;
@@ -125,10 +113,7 @@ function shortBreak() {
     button[2].classList.remove('text-color');
 
     // reset progress indicator
-    semicircles[0].style.display = 'none';
-    semicircles[1].style.display = 'none';
-    semicircles[0].style.transform = 'rotate(360deg)';
-    semicircles[1].style.transform = 'rotate(180deg)';
+    setProgress(0);
 
     // displays the set time
     min = setShortbreak.innerHTML;
@@ -148,10 +133,7 @@ function longBreak() {
     button[2].classList.add('text-color');
 
     // reset progress indicator
-    semicircles[0].style.display = 'none';
-    semicircles[1].style.display = 'none';
-    semicircles[0].style.transform = 'rotate(360deg)';
-    semicircles[1].style.transform = 'rotate(180deg)';
+    setProgress(0);
 
     // displays the set time
     min = setLongbreak.innerHTML;
@@ -327,29 +309,31 @@ function applyColor() {
     let applyButton = document.querySelector('.apply');
 
     if (color[0].firstChild === doneIcon) {
+        circle.style.stroke = 'var(--default)';                   // progress indicator    
         toggleButton.style.backgroundColor = 'var(--default)';    // toggle button
-        semicircles[0].style.backgroundColor = 'var(--default)';  // progress indicator 
-        semicircles[1].style.backgroundColor = 'var(--default)';   
         applyButton.style.backgroundColor = 'var(--default)';     // apply button
         timerButton.onmouseover = () => timerButton.style.color = 'var(--default)';   // timer button hover
         timerButton.onmouseout = () => timerButton.style.color = 'var(--timer)';
     }
 
     else if (color[1].firstChild === doneIcon) {
+        circle.style.stroke = 'var(--option2)';
         toggleButton.style.backgroundColor = 'var(--option2)';
-        semicircles[0].style.backgroundColor = 'var(--option2)';
-        semicircles[1].style.backgroundColor = 'var(--option2)';
         applyButton.style.backgroundColor = 'var(--option2)';
         timerButton.onmouseover = () => timerButton.style.color = 'var(--option2)';   
         timerButton.onmouseout = () => timerButton.style.color = 'var(--timer)';
     }
 
     else if (color[2].firstChild === doneIcon) {
+        circle.style.stroke = 'var(--option3)';
         toggleButton.style.backgroundColor = 'var(--option3)';
-        semicircles[0].style.backgroundColor = 'var(--option3)';
-        semicircles[1].style.backgroundColor = 'var(--option3)';
         applyButton.style.backgroundColor = 'var(--option3)';
         timerButton.onmouseover = () => timerButton.style.color = 'var(--option3)';   
         timerButton.onmouseout = () => timerButton.style.color = 'var(--timer)';
     }
 }
+
+/* apply button clicking effect */
+let applyButton = document.querySelector('.apply');
+applyButton.addEventListener('mousedown', () => applyButton.style.transform = 'scale(0.95)');
+applyButton.addEventListener('mouseup', () => applyButton.style.transform = 'scale(1)');

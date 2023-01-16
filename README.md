@@ -79,5 +79,5 @@ Users should be able to:
 
 - Special thanks to [AmaliTech](https://amalitech.org) for providing the training and mentorship for this project.
 
-- Credit to [EFTechLab](https://www.youtube.com/watch?v=uHVPAcaW1VQ) for providing insight into the implementation of the progress indicator.
+- Credit to [Abhik b](https://www.youtube.com/watch?v=MtYR2vCs2R0) for providing insight into the implementation of the progress indicator.
 

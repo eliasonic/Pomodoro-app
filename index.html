@@ -25,16 +25,23 @@
         <button class="panel-btn">long break</button>
         <div id="btn"></div>
       </div>
-        
+      
+      <audio src="http://soundbible.com/mp3/service-bell_daniel_simion.mp3"></audio>
+      
       <div class="timer-div center">
+
         <!-- progress indicator-->
         <div class="outermost-circle center">
-            <div class="outer-circle center">
-              <div class="semi-circle"></div>
-              <div class="semi-circle"></div>
-              <div class="semi-circle"></div>
-              <div class="inner-circle"></div>
-            </div>
+          <svg class="progress-ring" height="350" width="350">
+            <circle
+              class="progress-ring__circle"
+              stroke-width="9.5"
+              fill="transparent"
+              r="165"
+              cx="175"
+              cy="175"
+            />
+          </svg>
         </div>
 
         <!-- timer -->

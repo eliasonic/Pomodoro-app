@@ -103,42 +103,20 @@
     background: var(--bdark);
     position: absolute;
 }
-.outer-circle {
-    width: 339px;
-    height: 339px;
-    border-radius: 50%;
-    background: var(--bdark);
+.progress-ring {
     position: absolute;
-    overflow: hidden;
-    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}  
+.progress-ring__circle {
+    transition: 0.5s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke: var(--default);
+    stroke-linecap: round;
 }
-.semi-circle {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-origin: right center;
-}
-.semi-circle:nth-child(1) {
-    background: var(--default);
-    z-index: 2;
-}
-.semi-circle:nth-child(2) {
-    background: var(--default);
-    z-index: 3;
-}
-.semi-circle:nth-child(3) {
-    background: var(--bdark);
-    z-index: 4;
-}
-.inner-circle {
-    width: 319px;
-    height: 319px;
-    border-radius: 50%;
-    background: var(--bdark);
-    z-index: 5;
-}
+
 .timer {
     display: flex;
     flex-direction: column;
@@ -207,14 +185,6 @@
     border: 0;
     border-radius: 26.5px;
     cursor: pointer;
-}
-/* testing */
-.apply:hover {
-    /*opacity: 0.92;*/
-    width: 130px;
-    height: 50px;
-    left: 206px;
-    transition: .3s ease;
 }
 .header {
     display: flex;
@@ -425,15 +395,13 @@
     .outermost-circle {
         width: 268px;
         height: 268px;
+    }  
+    .progress-ring {
+        transform: scale(0.735);
+        top: -15%;
+        left: -15%;
     }
-    .outer-circle {
-        width: 248px;
-        height: 248px;
-    }    
-    .inner-circle {
-        width: 233px;
-        height: 233px;
-    }   
+
     .timer p {
         font-size: 80px;
         letter-spacing: -3px;
@@ -446,7 +414,6 @@
         width: 327px;
         height: 549px;
         border-radius: 15px;
-        /* testing */
         margin-top: 46px; 
     }
     .header {
@@ -462,10 +429,6 @@
         top: 522px;
         left: 94px;
     }    
-    .apply:hover {
-        left: 100px;
-        transition: .3s ease;
-    }
     .time {
         padding-top: 22px;
         padding-left: 93px;
@@ -486,9 +449,6 @@
     .set-area {
         width: 140px;
         height: 40px;
-        /*margin-top: 8px; 
-        padding-left: 16px;
-        padding-right: 15px;*/
         align-items: center;
     }
     #pd,
